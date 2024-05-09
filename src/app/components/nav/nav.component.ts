@@ -8,10 +8,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   template: `<nav
     class="flex items-center justify-between h-fit font-neue pb-5 md:pb-10"
   >
-    <a class="inline-flex items-center gap-3" routerLink="/">
+    <a class="inline-flex items-center gap-3" [routerLink]="['/']">
       <img
         class="w-10 md:w-16"
-        src="../../../assets/logo.svg"
+        src="/assets/logo.svg"
         alt="Joypad Jury controller logo."
       />
       <h1 class="text-3xl md:text-5xl text-bold">Joypad Jury</h1>

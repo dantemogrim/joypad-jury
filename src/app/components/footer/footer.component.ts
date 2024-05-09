@@ -8,23 +8,17 @@ import { Component } from '@angular/core';
     <ul class="inline-flex w-1/3 justify-between">
       <li>
         <a href="#"
-          ><img
-            class="w-12 p-2"
-            src="../../../assets/facebook.svg"
-            alt="Facebook"
+          ><img class="w-12 p-2" src="/assets/facebook.svg" alt="Facebook"
         /></a>
       </li>
       <li>
         <a href="#"
-          ><img
-            class="w-12 p-2"
-            src="../../../assets/instagram.svg"
-            alt="Instagram"
+          ><img class="w-12 p-2" src="/assets/instagram.svg" alt="Instagram"
         /></a>
       </li>
       <li>
         <a href="#"
-          ><img class="w-12 p-2" src="../../../assets/reddit.svg" alt="Reddit"
+          ><img class="w-12 p-2" src="/assets/reddit.svg" alt="Reddit"
         /></a>
       </li>
     </ul>

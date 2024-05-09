@@ -26,6 +26,4 @@ import { MainComponent } from './components/main/main.component';
   `,
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'Joypad Jury';
-}
+export class AppComponent {}

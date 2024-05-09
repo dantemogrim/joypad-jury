@@ -15,12 +15,12 @@ import { GameService } from '../../services/game.service';
   standalone: true,
   imports: [CommonModule, GameThumbnailComponent, HttpClientModule],
   template: `<div class="flex flex-col items-start">
-    <h2 class="font-neue text-4xl pb-3">Game List</h2>
+    <h2 class="font-neue text-4xl pb-3">My Rated Games</h2>
     <ul *ngFor="let game of data">
       <li>{{ game.name }}</li>
     </ul>
     <app-game-thumbnail></app-game-thumbnail>
-    <button class="p-1 border rounded-md my-4">New Game</button>
+    <button class="p-1 border rounded-md my-4">Add New</button>
   </div> `,
 })
 export class GameListComponent implements OnInit {
