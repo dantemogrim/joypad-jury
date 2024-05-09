@@ -15,7 +15,7 @@ export class GameService {
   constructor(private httpClient: HttpClient) {}
 
   index() {
-    return this.httpClient.get(this.REST_API);
+    return this.httpClient.get(`${this.REST_API}/game`);
   }
 
   handleError(error: HttpErrorResponse) {

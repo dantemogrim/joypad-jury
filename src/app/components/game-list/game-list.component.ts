@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   HttpClient,
   HttpClientModule,
@@ -16,7 +16,7 @@ import { GameService } from '../../services/game.service';
   imports: [CommonModule, GameThumbnailComponent, HttpClientModule],
   template: `<div class="flex flex-col items-start">
     <h2 class="font-neue text-4xl pb-3">My Rated Games</h2>
-    <ul *ngFor="let game of data">
+    <ul *ngFor="let game of games">
       <li>{{ game.name }}</li>
     </ul>
     <app-game-thumbnail></app-game-thumbnail>
@@ -24,26 +24,13 @@ import { GameService } from '../../services/game.service';
   </div> `,
 })
 export class GameListComponent implements OnInit {
-  REST_API: string = 'http://localhost:8000/game';
-  httpClient = inject(HttpClient);
-  data: any = [];
+  games: any = [];
+
+  constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
-    this.fetchData();
-  }
-
-  fetchData() {
-    this.httpClient.get(this.REST_API).subscribe((data) => {
-      console.log(data);
-      this.data = data;
+    this.gameService.index().subscribe((res) => {
+      this.games = res;
     });
   }
-
-  games: Game[] = [
-    new Game(
-      'Hollow Knight',
-      'Difficult but rewarding.',
-      'https://upload.wikimedia.org/wikipedia/en/0/04/Hollow_Knight_first_cover_art.webp'
-    ),
-  ];
 }

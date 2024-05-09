@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   template: `<a>{{ name }}</a>`,
 })
 export class GameThumbnailComponent {
+  // id: number: 1;
   name: string = 'Stardew Valley';
   description: string = 'I am addicted.';
 }
