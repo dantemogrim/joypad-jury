@@ -1,9 +1,12 @@
+import { catchError, map } from 'rxjs';
 import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { Game } from '../models/game.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +19,36 @@ export class GameService {
 
   index() {
     return this.httpClient.get(`${this.REST_API}/game`);
+  }
+
+  create(game: Game): Observable<any> {
+    return this.httpClient
+      .post(`${this.REST_API}/game/create`, game)
+      .pipe(catchError(this.handleError));
+  }
+
+  store(game: Game): Observable<any> {
+    return this.httpClient
+      .post(`${this.REST_API}/game`, game)
+      .pipe(catchError(this.handleError));
+  }
+
+  show(id: number): Observable<any> {
+    return this.httpClient
+      .get(`${this.REST_API}/game/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  update(id: number, game: Game): Observable<any> {
+    return this.httpClient
+      .put(`${this.REST_API}/game/${id}`, game)
+      .pipe(catchError(this.handleError));
+  }
+
+  destroy(id: number): Observable<any> {
+    return this.httpClient
+      .delete(`${this.REST_API}/game/${id}`)
+      .pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse) {
