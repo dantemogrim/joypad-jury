@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-game-thumbnail',
   standalone: true,
   imports: [],
-  templateUrl: './game-thumbnail.component.html',
+  template: `<a>{{ name }}</a>`,
 })
 export class GameThumbnailComponent {
   name: string = 'Stardew Valley';

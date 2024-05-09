@@ -26,7 +26,11 @@ import { GameService } from './services/game.service';
     RouterOutlet,
   ],
   providers: [],
-  templateUrl: './app.component.html',
+  template: `
+    <app-header></app-header>
+    <app-main></app-main>
+    <app-footer></app-footer>
+  `,
   styleUrl: './app.component.css',
 })
 // export class AppComponent {

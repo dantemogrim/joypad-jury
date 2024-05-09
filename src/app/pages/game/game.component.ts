@@ -4,9 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-game',
   standalone: true,
   imports: [],
-  templateUrl: './game.component.html',
-  styleUrl: './game.component.css'
+  template: `<p>game works!</p>`,
 })
-export class GameComponent {
-
-}
+export class GameComponent {}
