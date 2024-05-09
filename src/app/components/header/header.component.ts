@@ -8,6 +8,6 @@ import { NavComponent } from '../nav/nav.component';
   imports: [NavComponent],
   template: `<header class="text-center">
     <app-nav></app-nav>
-  </header> `,
+  </header>`,
 })
 export class HeaderComponent {}

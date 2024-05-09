@@ -3,27 +3,14 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 
-import { HeaderComponent } from './components/header/home.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { MainComponent } from './components/main/main.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    HeaderComponent,
-    MainComponent,
-    FooterComponent,
-    RouterOutlet,
-  ],
+  imports: [CommonModule, FormsModule, HomeComponent, RouterOutlet],
   providers: [],
-  template: `
-    <app-header></app-header>
-    <app-main></app-main>
-    <app-footer></app-footer>
-  `,
+  template: ` <router-outlet></router-outlet>`,
   styleUrl: './app.component.css',
 })
 export class AppComponent {}

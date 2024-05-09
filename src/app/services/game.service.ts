@@ -21,11 +21,11 @@ export class GameService {
     return this.httpClient.get(`${this.REST_API}/game`);
   }
 
-  create(game: Game): Observable<any> {
-    return this.httpClient
-      .post(`${this.REST_API}/game/create`, game)
-      .pipe(catchError(this.handleError));
-  }
+  // create(game: Game): Observable<any> {
+  //   return this.httpClient
+  //     .post(`${this.REST_API}/game/create`, game)
+  //     .pipe(catchError(this.handleError));
+  // }
 
   store(game: Game): Observable<any> {
     return this.httpClient
