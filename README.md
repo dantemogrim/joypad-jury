@@ -4,6 +4,7 @@
 
 📋 **Requirements**
 
+- Angular CLI
 - Node.js *(see exact version in `./.nvmrc`)*
 - npm
 
