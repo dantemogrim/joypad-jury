@@ -1,4 +1,3 @@
-import { ActivatedRoute } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
