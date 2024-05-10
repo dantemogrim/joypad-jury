@@ -15,7 +15,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 @Injectable({
   providedIn: 'root',
 })
-export class GamesService {
+export class GameService {
   firestore = inject(Firestore);
   gamesCollection = collection(
     this.firestore,

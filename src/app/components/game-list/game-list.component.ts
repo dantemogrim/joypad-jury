@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { GamesService } from '../../services/game.service';
+import { GameService } from '../../services/game.service';
 @Component({
   selector: 'app-game-list',
   standalone: true,
@@ -23,7 +23,7 @@ import { GamesService } from '../../services/game.service';
         </p>
         <button
           class="row-start-2 row-end-2 col-start-2 col-end-2 justify-self-end"
-          (click)="gameListService.deleteGame(game.id)"
+          (click)="gameService.deleteGame(game.id)"
         >
           Delete
         </button>
@@ -36,6 +36,6 @@ import { GamesService } from '../../services/game.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameListComponent {
-  gameListService = inject(GamesService);
-  games = this.gameListService.games;
+  gameService = inject(GameService);
+  games = this.gameService.games;
 }
