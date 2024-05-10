@@ -17,11 +17,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class GameService {
   firestore = inject(Firestore);
-  gamesCollection = collection(
+  gameCollection = collection(
     this.firestore,
     'games'
   ) as CollectionReference<Game>;
-  games = toSignal(collectionData(this.gamesCollection, { idField: 'id' }), {
+  games = toSignal(collectionData(this.gameCollection, { idField: 'id' }), {
     initialValue: [],
   });
 
@@ -30,8 +30,12 @@ export class GameService {
   router = inject(Router);
   constructor() {}
 
-  async addGame(newGame: Partial<Game>) {
-    await addDoc(this.gamesCollection, { ...newGame });
+  async addGame(name: string, review: string) {
+    const docRef = await addDoc(collection(this.firestore, 'games'), {
+      name,
+      review,
+    });
+    // console.log('Document written with ID: ', docRef.id);
     this.router.navigate(['/']);
   }
 
