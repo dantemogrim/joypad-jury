@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
 export class GameThumbnailComponent {
   // id: number: 1;
   name: string = 'Stardew Valley';
-  description: string = 'I am addicted.';
+  review: string = 'I am addicted.';
 }

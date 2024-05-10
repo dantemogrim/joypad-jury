@@ -1,67 +1,42 @@
-import { catchError, map } from 'rxjs';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Injectable, computed, inject } from '@angular/core';
 import { Game } from '../models/game.model';
+import { Router } from '@angular/router';
+import {
+  CollectionReference,
+  Firestore,
+  addDoc,
+  collection,
+  collectionData,
+  deleteDoc,
+  doc,
+} from '@angular/fire/firestore';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
 })
-export class GameService {
-  REST_API: string = 'http://localhost:8000';
-  httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+export class GamesService {
+  firestore = inject(Firestore);
+  gamesCollection = collection(
+    this.firestore,
+    'games'
+  ) as CollectionReference<Game>;
+  games = toSignal(collectionData(this.gamesCollection, { idField: 'id' }), {
+    initialValue: [],
+  });
 
-  constructor(private httpClient: HttpClient) {}
+  totalGames = computed(() => this.games().length);
 
-  index() {
-    return this.httpClient.get(`${this.REST_API}/game`);
+  router = inject(Router);
+  constructor() {}
+
+  async addGame(newGame: Partial<Game>) {
+    await addDoc(this.gamesCollection, { ...newGame });
+    this.router.navigate(['/']);
   }
 
-  // create(game: Game): Observable<any> {
-  //   return this.httpClient
-  //     .post(`${this.REST_API}/game/create`, game)
-  //     .pipe(catchError(this.handleError));
-  // }
-
-  store(game: Game): Observable<any> {
-    return this.httpClient
-      .post(`${this.REST_API}/game`, game)
-      .pipe(catchError(this.handleError));
-  }
-
-  show(id: number): Observable<any> {
-    return this.httpClient
-      .get(`${this.REST_API}/game/${id}`)
-      .pipe(catchError(this.handleError));
-  }
-
-  update(id: number, game: Game): Observable<any> {
-    return this.httpClient
-      .put(`${this.REST_API}/game/${id}`, game)
-      .pipe(catchError(this.handleError));
-  }
-
-  destroy(id: number): Observable<any> {
-    return this.httpClient
-      .delete(`${this.REST_API}/game/${id}`)
-      .pipe(catchError(this.handleError));
-  }
-
-  handleError(error: HttpErrorResponse) {
-    let errorMessage = '';
-
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
-    }
-
-    if (!(error.error instanceof ErrorEvent)) {
-      errorMessage = `Error!\nCode: ${error.status}\nMessage: ${error.message}`;
-    }
-
-    return errorMessage;
+  async deleteGame(id: string) {
+    const docRef = doc(this.firestore, 'games', id);
+    await deleteDoc(docRef);
   }
 }

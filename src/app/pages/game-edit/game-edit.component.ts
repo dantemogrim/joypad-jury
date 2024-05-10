@@ -24,15 +24,13 @@ import { HeaderComponent } from '../../components/header/header.component';
   template: `
     <app-header></app-header>
     <div>
-      <h2 class="font-neue text-3xl md:text-4xl pb-3">
-        Edit Review: {{ game.name }}
-      </h2>
-      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <h2 class="font-neue text-3xl md:text-4xl pb-3">Edit Review:</h2>
+      <form>
         <div class="mb-3">
           <textarea
             class="form-control bg-transparent border-2 rounded-md border-gray-200"
             rows="3"
-            formControlName="description"
+            formControlName="review"
             required
           ></textarea>
         </div>
@@ -40,43 +38,46 @@ import { HeaderComponent } from '../../components/header/header.component';
           <button type="submit" class="">Submit</button>
         </div>
       </form>
-      <button (click)="goBack()">Go Back</button>
+      <button>Go Back</button>
     </div>
     <app-footer></app-footer>
   `,
 })
-export class GameEditComponent implements OnInit {
-  id: any;
-  route: ActivatedRoute = inject(ActivatedRoute);
-  game: any = {};
-  editForm: FormGroup;
+export class GameEditComponent {}
+// <button (click)="goBack()">Go Back</button>
 
-  constructor(
-    public formBuilder: FormBuilder,
-    private gameService: GameService,
-    private location: Location
-  ) {
-    this.editForm = this.formBuilder.group({
-      description: ['', Validators.required],
-      // Add other form controls if needed
-    });
-    this.id = Number(this.route.snapshot.params['id']);
-    this.gameService.show(this.id).subscribe((res) => {
-      this.game = res;
-    });
-  }
+// export class GameEditComponent implements OnInit {
+//   id: any;
+//   route: ActivatedRoute = inject(ActivatedRoute);
+//   game: any = {};
+//   editForm: FormGroup;
 
-  goBack(): void {
-    this.location.back();
-  }
+//   constructor(
+//     public formBuilder: FormBuilder,
+//     private gameService: GameService,
+//     private location: Location
+//   ) {
+//     this.editForm = this.formBuilder.group({
+//       review: ['', Validators.required],
+//       // Add other form controls if needed
+//     });
+//     this.id = Number(this.route.snapshot.params['id']);
+//     this.gameService.show(this.id).subscribe((res) => {
+//       this.game = res;
+//     });
+//   }
 
-  onSubmit() {
-    if (this.editForm.valid) {
-      const reviewData = this.editForm.value;
-      this.gameService.update(this.id, reviewData);
-      this.goBack();
-    }
-  }
+//   goBack(): void {
+//     this.location.back();
+//   }
 
-  ngOnInit(): void {}
-}
+//   onSubmit() {
+//     if (this.editForm.valid) {
+//       const reviewData = this.editForm.value;
+//       this.gameService.update(this.id, reviewData);
+//       this.goBack();
+//     }
+//   }
+
+//   ngOnInit(): void {}
+// }

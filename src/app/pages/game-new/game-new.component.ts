@@ -23,7 +23,7 @@ import { HeaderComponent } from '../../components/header/header.component';
   ],
   template: `<app-header></app-header>
     <h2 class="font-neue text-3xl md:text-4xl pb-3">Rate New Game</h2>
-    <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+    <form>
       <div class="mb-3">
         <input
           type="text"
@@ -37,45 +37,48 @@ import { HeaderComponent } from '../../components/header/header.component';
         <textarea
           class="form-control bg-transparent border-2 rounded-md border-gray-200 p-2"
           rows="3"
-          formControlName="description"
-          placeholder="Description"
+          formControlName="review"
+          placeholder="review"
           required
         ></textarea>
       </div>
       <div class="mb-3 inline-flex gap-3">
         <button class="border rounded-md p-3" type="submit">Submit</button>
-        <a class="border rounded-md p-3" (click)="goBack()">Go Back</a>
+        <a class="border rounded-md p-3">Go Back</a>
       </div>
     </form>
     <app-footer></app-footer>`,
 })
-export class GameNewComponent implements OnInit {
-  route: ActivatedRoute = inject(ActivatedRoute);
-  newForm: FormGroup;
+export class GameNewComponent {}
+//  <a class="border rounded-md p-3" (click)="goBack()">Go Back</a>
 
-  constructor(
-    public formBuilder: FormBuilder,
-    private gameService: GameService,
-    private location: Location
-  ) {
-    this.newForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      // Add other form controls if needed
-    });
-  }
+// export class GameNewComponent implements OnInit {
+//   route: ActivatedRoute = inject(ActivatedRoute);
+//   newForm: FormGroup;
 
-  goBack(): void {
-    this.location.back();
-  }
+//   constructor(
+//     public formBuilder: FormBuilder,
+//     private gameService: GameService,
+//     private location: Location
+//   ) {
+//     this.newForm = this.formBuilder.group({
+//       name: ['', Validators.required],
+//       review: ['', Validators.required],
+//       // Add other form controls if needed
+//     });
+//   }
 
-  onSubmit() {
-    if (this.newForm.valid) {
-      const reviewData = this.newForm.value;
-      this.gameService.store(reviewData);
-      this.goBack();
-    }
-  }
+//   goBack(): void {
+//     this.location.back();
+//   }
 
-  ngOnInit(): void {}
-}
+//   onSubmit() {
+//     if (this.newForm.valid) {
+//       const reviewData = this.newForm.value;
+//       this.gameService.store(reviewData);
+//       this.goBack();
+//     }
+//   }
+
+//   ngOnInit(): void {}
+// }

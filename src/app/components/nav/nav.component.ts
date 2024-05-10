@@ -18,7 +18,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     </a>
     <ul class="inline-flex gap-8 text-2xl md:text-3xl">
       <li><a routerLink="/about">About</a></li>
-      <li><a routerLink="#">Signup</a></li>
     </ul>
   </nav>`,
 })
