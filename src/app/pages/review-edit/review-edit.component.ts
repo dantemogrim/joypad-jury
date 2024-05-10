@@ -1,26 +1,16 @@
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
-import { GameService } from '../../services/game.service';
+import { ReviewService } from '../../services/review.service';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
-  selector: 'app-game-edit',
+  selector: 'app-review-edit',
   standalone: true,
-  imports: [
-    CommonModule,
-    HeaderComponent,
-    FooterComponent,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
   template: `
     <app-header></app-header>
     <div>
@@ -43,4 +33,4 @@ import { HeaderComponent } from '../../components/header/header.component';
     <app-footer></app-footer>
   `,
 })
-export class GameEditComponent {}
+export class ReviewEditComponent {}

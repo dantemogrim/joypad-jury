@@ -2,18 +2,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
-import { GameService } from '../../services/game.service';
+import { ReviewService } from '../../services/review.service';
 
 import { FooterComponent } from '../../components/footer/footer.component';
 import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
-  selector: 'app-game-new',
+  selector: 'app-review-new',
   standalone: true,
   imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
   template: `<app-header></app-header>
-    <h2 class="font-neue text-3xl md:text-4xl pb-3">Rate New Game</h2>
-    <form (ngSubmit)="gameService.addGame(name, review)">
+    <h2 class="font-neue text-3xl md:text-4xl pb-3">Review Game</h2>
+    <form (ngSubmit)="reviewService.addReview(name, review)">
       <div class="mb-3">
         <input
           type="text"
@@ -44,8 +44,8 @@ import { HeaderComponent } from '../../components/header/header.component';
     <app-footer></app-footer>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GameNewComponent {
-  gameService = inject(GameService);
+export class ReviewNewComponent {
+  reviewService = inject(ReviewService);
   name: string = '';
   review: string = '';
 
@@ -56,11 +56,4 @@ export class GameNewComponent {
   onReviewChange(newReview: string) {
     this.review = newReview;
   }
-
-  // save() {
-  //   this.gameService.addGame({
-  //     name: this.name.trim(),
-  //     review: this.review.trim(),
-  //   });
-  // }
 }

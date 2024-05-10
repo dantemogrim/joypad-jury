@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 
 import { HeaderComponent } from '../../components/header/header.component';
-import { GameListComponent } from '../../components/game-list/game-list.component';
+import { ReviewListComponent } from '../../components/review-list/review-list.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, GameListComponent, FooterComponent],
+  imports: [HeaderComponent, ReviewListComponent, FooterComponent],
   template: `<app-header></app-header>
-    <app-game-list></app-game-list>
+    <app-review-list></app-review-list>
     <app-footer></app-footer>`,
 })
 export class HomeComponent {}

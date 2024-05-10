@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-footer',
   standalone: true,
   imports: [],
-  template: ` <footer class="text-center">
+  template: `<footer class="text-center py-5">
     <ul class="inline-flex w-1/3 justify-between">
       <li>
         <a href="#"
