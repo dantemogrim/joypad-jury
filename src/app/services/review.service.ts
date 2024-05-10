@@ -1,15 +1,17 @@
-import { Injectable, computed, inject } from '@angular/core';
-import { Review } from '../models/review.model';
-import { Router } from '@angular/router';
 import {
-  CollectionReference,
-  Firestore,
   addDoc,
   collection,
   collectionData,
+  CollectionReference,
   deleteDoc,
   doc,
+  Firestore,
+  getDoc,
+  updateDoc,
 } from '@angular/fire/firestore';
+import { Injectable, computed, inject } from '@angular/core';
+import { Review } from '../models/review.model';
+import { Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
@@ -17,37 +19,51 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class ReviewService {
   firestore = inject(Firestore);
+  router = inject(Router);
   reviewCollection = collection(
     this.firestore,
     'reviews'
   ) as CollectionReference<Review>;
-  reviews = toSignal(collectionData(this.reviewCollection, { idField: 'id' }), {
+
+  getAll = toSignal(collectionData(this.reviewCollection, { idField: 'id' }), {
     initialValue: [],
   });
 
-  totalGames = computed(() => this.reviews().length);
+  async getById(id: any): Promise<Review | null> {
+    const docRef = await getDoc(doc(this.firestore, 'reviews', id));
+    if (docRef.exists()) {
+      return {
+        game: docRef.data()['game'],
+        text: docRef.data()['text'],
+      } as Review;
+    } else {
+      return null;
+    }
+  }
 
-  router = inject(Router);
-  constructor() {}
+  reviewCount = computed(() => this.getAll().length);
 
-  async addReview(game: string, text: string) {
-    const docRef = await addDoc(collection(this.firestore, 'reviews'), {
+  async create(game: string, score: string, text: string) {
+    await addDoc(collection(this.firestore, 'reviews'), {
       game,
+      score,
       text,
     });
-    // console.log('Document written with ID: ', docRef.id);
     this.router.navigate(['/']);
   }
 
-  async deleteReview(id: string) {
+  async delete(id: string) {
     const docRef = doc(this.firestore, 'reviews', id);
     await deleteDoc(docRef);
   }
 
-  // async updateGame(id: string, review: string) {
-  //   const docRef = doc(this.firestore, 'reviews', id);
-  //   await docRef.update({
-  //     review,
-  //   });
-  // }
+  async update(documentId: any, game: string, score: string, text: string) {
+    const ref = doc(this.firestore, 'reviews', documentId);
+    await updateDoc(ref, {
+      game: game,
+      score: score,
+      text: text,
+    });
+    this.router.navigate(['/']);
+  }
 }

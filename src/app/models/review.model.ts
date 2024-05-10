@@ -1,23 +1,12 @@
 export class Review {
-  public developer?: string;
+  public id;
   public game: string;
-  public id: string;
-  public imagePath?: string;
   public score: string;
   public text: string;
 
-  constructor(
-    developer: string,
-    game: string,
-    id: string,
-    imagePath: string,
-    score: string,
-    text: string
-  ) {
-    this.developer = developer;
-    this.game = game;
+  constructor(id: string, game: string, score: string, text: string) {
     this.id = id;
-    this.imagePath = imagePath;
+    this.game = game;
     this.score = score;
     this.text = text;
   }

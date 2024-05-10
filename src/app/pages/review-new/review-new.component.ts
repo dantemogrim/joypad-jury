@@ -15,7 +15,7 @@ import { HeaderComponent } from '../../components/header/header.component';
     <h2 class="font-neue text-3xl md:text-4xl pb-3">Review Game</h2>
     <form
       class="flex flex-col items-start gap-4"
-      (ngSubmit)="reviewService.addReview(game, text)"
+      (ngSubmit)="reviewService.create(game, score, text)"
     >
       <input
         type="text"
