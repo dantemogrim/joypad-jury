@@ -1,17 +1,17 @@
-import { CommonModule, Location } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { CommonModule, Location } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 
-import { ReviewService } from '../../services/review.service';
+import { ReviewService } from "../../services/review.service";
 
-import { FooterComponent } from '../../components/footer/footer.component';
-import { HeaderComponent } from '../../components/header/header.component';
+import { FooterComponent } from "../../components/footer/footer.component";
+import { HeaderComponent } from "../../components/header/header.component";
 
 @Component({
-  selector: 'app-review-new',
-  standalone: true,
-  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
-  template: `<app-header></app-header>
+	selector: "app-review-new",
+	standalone: true,
+	imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
+	template: `<app-header></app-header>
     <h2 class="font-neue text-3xl md:text-4xl pb-3">Review Game</h2>
     <form
       class="flex flex-col items-start gap-4"
@@ -57,28 +57,28 @@ import { HeaderComponent } from '../../components/header/header.component';
       </div>
     </form>
     <app-footer></app-footer>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReviewNewComponent {
-  reviewService = inject(ReviewService);
-  game: string = '';
-  score: string = '';
-  text: string = '';
-  location = inject(Location);
+	reviewService = inject(ReviewService);
+	game: string = "";
+	score: string = "";
+	text: string = "";
+	location = inject(Location);
 
-  onGameChange(newGame: string) {
-    this.game = newGame;
-  }
+	onGameChange(newGame: string) {
+		this.game = newGame;
+	}
 
-  onScoreChange(newScore: string) {
-    this.score = newScore;
-  }
+	onScoreChange(newScore: string) {
+		this.score = newScore;
+	}
 
-  onTextChange(newText: string) {
-    this.text = newText;
-  }
+	onTextChange(newText: string) {
+		this.text = newText;
+	}
 
-  goBack() {
-    this.location.back();
-  }
+	goBack() {
+		this.location.back();
+	}
 }

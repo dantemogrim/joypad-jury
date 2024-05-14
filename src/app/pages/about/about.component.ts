@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
-import { HeaderComponent } from '../../components/header/header.component';
-import { FooterComponent } from '../../components/footer/footer.component';
+import { HeaderComponent } from "../../components/header/header.component";
+import { FooterComponent } from "../../components/footer/footer.component";
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [HeaderComponent, FooterComponent],
-  template: ` <app-header></app-header>
+	selector: "app-about",
+	standalone: true,
+	imports: [HeaderComponent, FooterComponent],
+	template: ` <app-header></app-header>
     <h2 class="font-neue text-3xl md:text-4xl pb-3">About</h2>
     <p class="pb-3">
       Charge attack Total War CoD Hack ‘n’ Slasher cut-in Hot Coffee boosting
@@ -39,6 +39,6 @@ import { FooterComponent } from '../../components/footer/footer.component';
       fatality PlayStation3 AFK single-player track-ball. Cel-shaded pause indie
       level action command easter eggs shmups.
     </p>
-    <app-footer></app-footer>`,
+    <app-footer></app-footer>`
 })
 export class AboutComponent {}

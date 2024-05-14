@@ -1,14 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink } from '@angular/router';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ReviewService } from '../../services/review.service';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from "@angular/common";
+import { RouterOutlet, RouterLink } from "@angular/router";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
+import { ReviewService } from "../../services/review.service";
+import { FormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'app-review-list',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, FormsModule],
-  template: `
+	selector: "app-review-list",
+	standalone: true,
+	imports: [CommonModule, RouterOutlet, RouterLink, FormsModule],
+	template: `
     <h2 class="font-neue text-3xl md:text-4xl pb-3">My Game Reviews</h2>
     <ul class="flex flex-col items-center justify-center">
       <li
@@ -44,9 +44,9 @@ import { FormsModule } from '@angular/forms';
       <a routerLink="/new" class="border-2 rounded-md p-3">Add New</a>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReviewListComponent {
-  reviewService = inject(ReviewService);
-  getAll = this.reviewService.getAll;
+	reviewService = inject(ReviewService);
+	getAll = this.reviewService.getAll;
 }

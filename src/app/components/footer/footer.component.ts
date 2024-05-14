@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-footer',
-  standalone: true,
-  imports: [],
-  template: `<footer class="text-center py-5">
+	selector: "app-footer",
+	standalone: true,
+	imports: [],
+	template: `<footer class="text-center py-5">
     <ul class="inline-flex w-1/3 justify-between">
       <li>
         <a href="#"
@@ -23,8 +23,8 @@ import { Component } from '@angular/core';
       </li>
     </ul>
     <p class="pt-3 italic">© {{ year }}</p>
-  </footer>`,
+  </footer>`
 })
 export class FooterComponent {
-  year: number = new Date().getFullYear();
+	year: number = new Date().getFullYear();
 }

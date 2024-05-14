@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
-  selector: 'app-nav',
-  standalone: true,
-  imports: [RouterLink, RouterLinkActive],
-  template: `<nav
+	selector: "app-nav",
+	standalone: true,
+	imports: [RouterLink, RouterLinkActive],
+	template: `<nav
     class="flex items-center justify-between h-fit font-neue pb-5 md:pb-10"
   >
     <a class="inline-flex items-center gap-3" [routerLink]="['/']">
@@ -19,6 +19,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     <ul class="inline-flex gap-8 text-2xl md:text-3xl">
       <li><a routerLink="/about">About</a></li>
     </ul>
-  </nav>`,
+  </nav>`
 })
 export class NavComponent {}

@@ -1,17 +1,17 @@
-import { CommonModule, Location } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { CommonModule, Location } from "@angular/common";
+import { Component, inject } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
 
-import { ReviewService } from '../../services/review.service';
-import { FooterComponent } from '../../components/footer/footer.component';
-import { HeaderComponent } from '../../components/header/header.component';
+import { ReviewService } from "../../services/review.service";
+import { FooterComponent } from "../../components/footer/footer.component";
+import { HeaderComponent } from "../../components/header/header.component";
 
 @Component({
-  selector: 'app-review-edit',
-  standalone: true,
-  imports: [CommonModule, HeaderComponent, FormsModule, FooterComponent],
-  template: `
+	selector: "app-review-edit",
+	standalone: true,
+	imports: [CommonModule, HeaderComponent, FormsModule, FooterComponent],
+	template: `
     <app-header></app-header>
     <div>
       <h2 class="font-neue text-3xl md:text-4xl pb-3">
@@ -61,41 +61,41 @@ import { HeaderComponent } from '../../components/header/header.component';
       </form>
     </div>
     <app-footer></app-footer>
-  `,
+  `
 })
 export class ReviewEditComponent {
-  reviewService = inject(ReviewService);
-  // Full url.
-  currentRoute: ActivatedRoute = inject(ActivatedRoute);
-  reviewId = this.currentRoute.snapshot.paramMap.get('id');
-  currentReview = this.getCurrentReview();
-  game: string = '';
-  score: string = '';
-  text: string = '';
-  location = inject(Location);
+	reviewService = inject(ReviewService);
+	// Full url.
+	currentRoute: ActivatedRoute = inject(ActivatedRoute);
+	reviewId = this.currentRoute.snapshot.paramMap.get("id");
+	currentReview = this.getCurrentReview();
+	game: string = "";
+	score: string = "";
+	text: string = "";
+	location = inject(Location);
 
-  async getCurrentReview() {
-    const review = await this.reviewService.getById(this.reviewId);
-    if (review) {
-      this.game = review.game;
-      this.score = review.score;
-      this.text = review.text;
-    }
-  }
+	async getCurrentReview() {
+		const review = await this.reviewService.getById(this.reviewId);
+		if (review) {
+			this.game = review.game;
+			this.score = review.score;
+			this.text = review.text;
+		}
+	}
 
-  onGameChange(newGame: string) {
-    this.game = newGame;
-  }
+	onGameChange(newGame: string) {
+		this.game = newGame;
+	}
 
-  onScoreChange(newScore: string) {
-    this.score = newScore;
-  }
+	onScoreChange(newScore: string) {
+		this.score = newScore;
+	}
 
-  onTextChange(newText: string) {
-    this.text = newText;
-  }
+	onTextChange(newText: string) {
+		this.text = newText;
+	}
 
-  goBack() {
-    this.location.back();
-  }
+	goBack() {
+		this.location.back();
+	}
 }
