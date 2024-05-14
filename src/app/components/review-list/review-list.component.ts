@@ -10,42 +10,43 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, RouterOutlet, RouterLink, FormsModule],
   template: `
     <h2 class="font-neue text-3xl md:text-4xl pb-3">My Game Reviews</h2>
-    <ul
-      class="flex flex-col divide-y gap-10 items-center justify-center w-full"
-    >
+    <ul class="flex flex-col items-center justify-center">
       <li
-        class="grid items-center grid-rows-2 grid-cols-2 gap-2 w-full max-h-25"
+        class="items-start w-full flex flex-col border-2 rounded-md px my-3"
         *ngFor="let review of getAll()"
       >
-        <p
-          class="text-lg row-start-1 row-end-1 col-start-1 col-end-1 text-green-100"
-        >
-          {{ review.game }}
-        </p>
-        <p class="row-start-2 row-end-2 col-start-1 col-end-1">
+        <div class="inline-flex justify-between w-full p-3">
+          <p class="text-lg text-green-100">
+            {{ review.game }}
+          </p>
+          <p class="text-lg">
+            {{ review.score }}
+          </p>
+        </div>
+        <p class="px-3">
           {{ review.text }}
         </p>
-        <a
-          [routerLink]="['/edit', review.id]"
-          class="row-start-1 row-end-1 col-start-2 col-end-2 justify-self-end"
-          >Edit</a
-        >
-        <button
-          class="row-start-2 row-end-2 col-start-2 col-end-2 justify-self-end"
-          (click)="reviewService.delete(review.id)"
-        >
-          Delete
-        </button>
+        <div class="inline-flex justify-between w-full">
+          <a [routerLink]="['/edit', review.id]">
+            <img class="w-12 p-3" src="/assets/edit.svg" alt="Edit review." />
+          </a>
+          <button (click)="reviewService.delete(review.id)">
+            <img
+              class="w-12 p-3"
+              src="/assets/delete.svg"
+              alt="Delete review."
+            />
+          </button>
+        </div>
       </li>
     </ul>
-    <div class="mt-10">
-      <a routerLink="/new" class="border rounded-md p-3">Add New</a>
+    <div class="my-8">
+      <a routerLink="/new" class="border-2 rounded-md p-3">Add New</a>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReviewListComponent {
-  // TODO switch out edit + delete with icons.
   reviewService = inject(ReviewService);
   getAll = this.reviewService.getAll;
 }

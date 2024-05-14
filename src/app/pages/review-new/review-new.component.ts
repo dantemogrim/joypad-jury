@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
@@ -26,7 +26,6 @@ import { HeaderComponent } from '../../components/header/header.component';
         name="game"
         required
       />
-
       <textarea
         class="form-control bg-transparent border-2 rounded-md border-gray-200 p-2"
         rows="3"
@@ -36,7 +35,6 @@ import { HeaderComponent } from '../../components/header/header.component';
         name="text"
         required
       ></textarea>
-
       <select
         class="bg-transparent border-2 p-2 rounded-md"
         [(ngModel)]="score"
@@ -44,18 +42,18 @@ import { HeaderComponent } from '../../components/header/header.component';
         name="score"
         required
       >
-        <option value="">--- Pick a score ---</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+        <option value="" disabled selected>--- Pick a score ---</option>
+        <option value="🔥">🔥</option>
+        <option value="🔥🔥">🔥🔥</option>
+        <option value="🔥🔥🔥">🔥🔥🔥</option>
+        <option value="🔥🔥🔥🔥">🔥🔥🔥🔥</option>
+        <option value="🔥🔥🔥🔥🔥">🔥🔥🔥🔥🔥</option>
       </select>
-
       <div class="mb-3 inline-flex gap-3">
-        <button class="border rounded-md p-3" type="submit">Submit</button>
-        <a routerLink="/" class="border rounded-md p-3">Go Back</a>
+        <button class="border-2 rounded-md p-3" type="submit">Submit</button>
+        <button class="border-2 rounded-md p-3" (click)="goBack()">
+          Go Back
+        </button>
       </div>
     </form>
     <app-footer></app-footer>`,
@@ -66,6 +64,7 @@ export class ReviewNewComponent {
   game: string = '';
   score: string = '';
   text: string = '';
+  location = inject(Location);
 
   onGameChange(newGame: string) {
     this.game = newGame;
@@ -77,5 +76,9 @@ export class ReviewNewComponent {
 
   onTextChange(newText: string) {
     this.text = newText;
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

@@ -14,7 +14,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
         src="/assets/logo.svg"
         alt="Joypad Jury controller logo."
       />
-      <h1 class="text-3xl md:text-5xl text-bold">Joypad Jury</h1>
+      <h1 class="text-4xl md:text-5xl text-bold">Joypad Jury</h1>
     </a>
     <ul class="inline-flex gap-8 text-2xl md:text-3xl">
       <li><a routerLink="/about">About</a></li>
