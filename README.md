@@ -2,7 +2,7 @@
 
 <img width="100%" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTc1Y2l5Z2gycnMzcXN6cnVpcTlydTlvdmd0aWplY3ExOHRzeHJ0OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ardMfW1w53UvC/giphy.gif" alt="An pixel art animation of a duck being shot and a dog jumping after it. From the old, retro NES game Duck Hunt">
 
-Become your own video/computer game critic! Create a list of the games you've conquered, rate them based on your experience, and leave detailed reviews.
+Become your own game critic! Create a list of the games you've conquered, rate them based on your experience, and leave detailed reviews.
 
 ## 🚀 Setup
 
